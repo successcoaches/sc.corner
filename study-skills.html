@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Skills & BRYTE — Excel High School</title>
+<link href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #365064;
+    --blue-dark: #263d4e;
+    --red: #ec4d4d;
+    --red-light: #f07878;
+    --cream: #faf8f6;
+    --warm-gray: #f2eeeb;
+    --text: #1a1a1a;
+    --muted: #64605c;
+    --border: rgba(54,80,100,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); }
+
+  /* HEADER */
+  header {
+    background: var(--blue);
+    padding: 52px 60px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 70px solid rgba(236,77,77,0.1);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: 260px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 45px solid rgba(236,77,77,0.06);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; letter-spacing: 1px;
+    color: var(--red-light); text-decoration: none;
+    text-transform: uppercase; margin-bottom: 20px;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.75; }
+  .header-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--red-light); margin-bottom: 12px;
+  }
+  header h1 {
+    font-family: 'Calistoga', serif;
+    font-size: 48px; color: #fff; line-height: 1.1; margin-bottom: 14px;
+  }
+  header p { font-size: 15px; color: rgba(255,255,255,0.68); max-width: 520px; line-height: 1.65; font-weight: 300; }
+
+  .red-rule { height: 4px; background: linear-gradient(90deg, var(--red), transparent); }
+
+  main { max-width: 980px; margin: 0 auto; padding: 48px 40px 64px; }
+  section { margin-bottom: 52px; }
+
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .section-title {
+    font-family: 'Calistoga', serif;
+    font-size: 24px; color: var(--blue); margin-bottom: 20px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* BRYTE HERO BOX */
+  .bryte-box {
+    background: var(--blue);
+    border-radius: 14px;
+    padding: 36px 40px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .bryte-box::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 50px solid rgba(236,77,77,0.1);
+  }
+  .bryte-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: #fff;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .bryte-box h3 { font-family: 'Calistoga', serif; font-size: 26px; color: #fff; margin-bottom: 14px; }
+  .bryte-box p { font-size: 14.5px; color: rgba(255,255,255,0.80); line-height: 1.7; font-weight: 300; max-width: 680px; }
+
+  /* RESOURCE CARDS */
+  .resource-list { display: flex; flex-direction: column; gap: 12px; }
+  .resource-item {
+    display: flex; align-items: center; gap: 16px;
+    background: #fff; border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 20px; text-decoration: none; color: var(--text);
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .resource-item:hover { border-color: var(--red); box-shadow: 0 6px 20px rgba(54,80,100,0.10); transform: translateY(-1px); }
+  .resource-icon {
+    width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .resource-icon.blue { background: rgba(54,80,100,0.1); color: var(--blue); }
+  .resource-icon.red  { background: rgba(236,77,77,0.1);  color: var(--red);  }
+  .resource-text { flex: 1; }
+  .resource-title { font-size: 14px; font-weight: 500; color: var(--blue); margin-bottom: 3px; }
+  .resource-desc  { font-size: 12.5px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+  .resource-arrow { color: var(--red); font-size: 16px; flex-shrink: 0; }
+
+  /* ANXIETY STRIP */
+  .note-strip {
+    background: rgba(236,77,77,0.06);
+    border: 1px solid var(--red-light);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .note-strip-icon { font-size: 20px; flex-shrink: 0; color: var(--red); }
+  .note-strip a { color: var(--red); font-weight: 500; text-decoration: none; }
+  .note-strip a:hover { text-decoration: underline; }
+
+  footer { background: var(--blue); text-align: center; padding: 20px; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+
+  @media (max-width: 620px) {
+    header { padding: 36px 24px 32px; }
+    header h1 { font-size: 32px; }
+    main { padding: 32px 20px 48px; }
+    .bryte-box { padding: 26px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back-link" href="student-sc-corner.html">← Back to Success Coach Corner</a>
+  <p class="header-eyebrow">Excel High School · Student Resources</p>
+  <h1>Study Skills &amp; BRYTE</h1>
+  <p>Tools, tips, and resources to help you study smarter, stay focused, and succeed in every course.</p>
+</header>
+<div class="red-rule"></div>
+
+<main>
+
+  <!-- BRYTE -->
+  <section>
+    <p class="section-label">AI Tutor</p>
+    <h2 class="section-title">Meet BRYTE</h2>
+    <div class="bryte-box">
+      <div class="bryte-badge">✦ New at Excel</div>
+      <h3>BRYTE — Your Built-In AI Tutor</h3>
+      <p>Excel High School now features BRYTE, a built-in AI tutor that offers personalized, 24/7 academic support across all subjects — helping you master concepts, stay on track, and succeed independently. Unlike schools that just provide textbooks, BRYTE delivers interactive help through our online platform, so parents don't have to be the tutor.</p>
+    </div>
+  </section>
+
+  <!-- NOTE TAKING -->
+  <section>
+    <p class="section-label">Note Taking</p>
+    <h2 class="section-title">Note Taking Tips</h2>
+    <div class="resource-list">
+      <a class="resource-item" href="https://learningcenter.unc.edu/tips-and-tools/" target="_blank">
+        <div class="resource-icon blue">◈</div>
+        <div class="resource-text">
+          <div class="resource-title">UNC Chapel Hill — Tips &amp; Tools</div>
+          <div class="resource-desc">Covers studying, productivity, reading, and test-taking tips from the University of North Carolina at Chapel Hill.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+      <a class="resource-item" href="https://student.unsw.edu.au/note-taking-skills" target="_blank">
+        <div class="resource-icon red">◆</div>
+        <div class="resource-text">
+          <div class="resource-title">UNSW Sydney — Note Taking Skills</div>
+          <div class="resource-desc">Covers why note taking matters, how to prepare before a lesson, what to do during and after. Geared toward college courses, but the strategies apply to all learning.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- STUDYING -->
+  <section>
+    <p class="section-label">Studying</p>
+    <h2 class="section-title">Studying Resources</h2>
+    <div class="resource-list">
+      <a class="resource-item" href="https://thewritelife.com/10-concentration-apps-that-will-help-you-get-down-to-business/" target="_blank">
+        <div class="resource-icon red">◉</div>
+        <div class="resource-text">
+          <div class="resource-title">Concentration Apps &amp; Tips</div>
+          <div class="resource-desc">A great resource to help you focus and get down to business when it's time to study.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+      <a class="resource-item" href="https://www.khanacademy.org/" target="_blank">
+        <div class="resource-icon blue">✦</div>
+        <div class="resource-text">
+          <div class="resource-title">Khan Academy</div>
+          <div class="resource-desc">Free resource to help with many subjects — from math and science to history and test prep.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+      <a class="resource-item" href="https://www.mathsisfun.com/" target="_blank">
+        <div class="resource-icon red">▲</div>
+        <div class="resource-text">
+          <div class="resource-title">Maths is Fun</div>
+          <div class="resource-desc">Free math resource for students seeking extra practice and explanations across all math levels.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+      <a class="resource-item" href="https://www.hippocampus.org/" target="_blank">
+        <div class="resource-icon blue">■</div>
+        <div class="resource-text">
+          <div class="resource-title">HippoCampus</div>
+          <div class="resource-desc">Homework and study help across a wide variety of subjects — free and easy to use.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+      <a class="resource-item" href="https://learningcenter.unc.edu/tips-and-tools/studying-101-study-smarter-not-harder/" target="_blank">
+        <div class="resource-icon red">◈</div>
+        <div class="resource-text">
+          <div class="resource-title">UNC Chapel Hill — Studying 101</div>
+          <div class="resource-desc">A guide to effective study habits from UNC Chapel Hill — study smarter, not harder.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+      <a class="resource-item" href="https://drive.google.com/file/d/17nfOsEyEM_F_X-aRcXPg8OxCDTpXsA21/view" target="_blank">
+        <div class="resource-icon blue">◎</div>
+        <div class="resource-text">
+          <div class="resource-title">Additional Study Resource</div>
+          <div class="resource-desc">A supplemental study guide to help you prepare and succeed in your courses.</div>
+        </div>
+        <span class="resource-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="note-strip">
+      <div class="note-strip-icon">◇</div>
+      <div>Feeling anxious before a test? Visit the <a href="https://sites.google.com/view/success-coach-corner/student-success-resources/take-a-break" target="_blank">Take a Break! page</a> for wellness resources to help you reset and recharge.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Excel High School · The Success Coach Corner · excelhighschool.com
+</footer>
+
+</body>
+</html>
